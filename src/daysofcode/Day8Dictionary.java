@@ -1,4 +1,4 @@
-package hackerrank;
+package daysofcode;
 
 import java.util.*;
 import java.io.*;
