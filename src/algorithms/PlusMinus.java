@@ -26,17 +26,17 @@ public class PlusMinus {
 		// add elements to array
 		for (int arr_i = 0; arr_i < size; arr_i++) {
 			array[arr_i] = in.nextInt();
-			if (array[i] > 0) {
+			if (array[arr_i] > 0) {
 				totalPositive++;
-			} else if (array[i] < 0) {
+			} else if (array[arr_i] < 0) {
 				totalNegative++;
 			} else {
 				totalZero++;
 			}
 		}
-		// for (int i = 0; i < array.length; i++) {
-		//
-		// }
+		System.out.println(totalPositive / (double) size);
+		System.out.println(totalNegative / (double) size);
+		System.out.println(totalZero / (double) size);
 	}
 
 }
