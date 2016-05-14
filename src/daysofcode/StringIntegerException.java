@@ -1,7 +1,12 @@
 package daysofcode;
 
 import java.util.Scanner;
-
+/**
+ * Read a string and print its integer value; 
+ * if string cannot be converted to an integer, print "Bad String".
+ * @author J.T. Earl
+ *
+ */
 public class StringIntegerException {
 	
     public static void main(String[] args) {
