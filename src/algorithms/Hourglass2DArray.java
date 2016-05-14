@@ -2,6 +2,13 @@ package algorithms;
 
 import java.util.Scanner;
 
+/**
+ * Task: In this problem, you have to print the largest sum among all the
+ * hourglasses in the array.
+ * 
+ * @author J.T. Earl
+ *
+ */
 public class Hourglass2DArray {
 
 	public static void main(String[] args) {
