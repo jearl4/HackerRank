@@ -29,7 +29,7 @@ public class Scope {
 }
 
 // Hacker Rank premade solution class
-class Solution {
+class Solve {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
