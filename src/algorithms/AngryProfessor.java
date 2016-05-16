@@ -32,5 +32,6 @@ public class AngryProfessor {
 				System.out.println("NO"); // no class is not canceled
 			}
 		}
+		in.close();
 	}
 }
