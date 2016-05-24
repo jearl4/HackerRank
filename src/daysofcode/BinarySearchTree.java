@@ -1,5 +1,7 @@
 package daysofcode;
 
+import java.util.Scanner;
+
 /**
  * The height of a binary search tree is the number of edges between the tree's
  * root and its furthest leaf. You are given a pointer, root, pointing to the
@@ -28,6 +30,11 @@ class BinarySearchTree {
 	 */
 	public static int getHeight(Node2 root) {
 		// Write your code here
+		if (root.right != null || root.left != null) {
+			return 1 + Math.max(getHeight(root), getHeight(root));
+		} else {
+			return 0;
+		}
 	}
 
 	public static Node2 insert(Node2 root, int data) {
