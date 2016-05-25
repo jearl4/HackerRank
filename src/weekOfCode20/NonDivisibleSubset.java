@@ -6,14 +6,14 @@ import java.util.LinkedList;
 
 public class NonDivisibleSubset {
 	public static void main(String[] args) {
-		int k = 5;
-		int a[] = { 1, 7, 2, 4, 5, 1 };
+		int k = 1;
+		int a[] = { 4, 2, 2, 4, 6, 8, 10 };
 		Arrays.sort(a);
 		System.out.println(nonDivisiblePairs(a, k));
 	}
 
 	public static int nonDivisiblePairs(int[] listOfNumbers, int divisor) {
-		if (divisor == 0) { // can't divide by 0
+		if (divisor == 0 || divisor == 1) { // can't divide by 0
 			return 0;
 		}
 		ArrayList<Integer> subPair = new ArrayList<Integer>();
