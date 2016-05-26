@@ -1,23 +1,35 @@
 package daysofcode;
 
-/**
- * Your local library needs your help! Given the expected and actual return
- * dates for a library book, create a program that calculates the fine (if any).
- * The fee structure is as follows:
- * 
- * If the book is returned on or before the expected return date, no fine will
- * be charged (i.e.: fine = 0). If the book is returned after the expected
- * return day but still within the same calendar month and year as the expected
- * return date, fine = 15 x number of days late. If the book is returned after
- * the expected return month but still within the same calendar year as the
- * expected return date, the fine = 500 x number days late. If the book is
- * returned after the calendar year in which it was expected, there is a fixed
- * fine of 10000.
- * 
- * @author J.T. Earl
- *
- */
+import java.util.Scanner;
 
 public class NestedLogic {
+	public static void main(String[] args) {
+		// Scanner in = new Scanner(System.in);
+		int dayReturned = 2;// in.nextInt();
+		int monthReturned = 6;// in.nextInt();
+		int yearReturned = 2014;// in.nextInt();
+		int dayExpected = 5;// in.nextInt();
+		int monthExpected = 7;// in.nextInt();
+		int yearExpected = 2014;// in.nextInt();
+		// in.close();
 
+		int dayFine = 0;
+		int monthFine = 0;
+		int yearFine = 0;
+
+		int totalReturned = dayReturned + monthReturned + yearReturned;
+		int totalExpected = dayExpected + monthExpected + yearExpected;
+
+		if (totalReturned == totalExpected || totalReturned < totalExpected) {
+			System.out.println(0);
+			return;
+		} else if (yearReturned != yearExpected) {
+			yearFine = 10000;
+		} else if (monthReturned != monthExpected) {
+			monthFine = (monthReturned - monthExpected) * 500;
+		} else if (dayReturned != dayExpected) {
+			dayFine = (dayReturned - dayExpected) * 15;
+		}
+		System.out.println(dayFine + monthFine + yearFine);
+	}
 }
