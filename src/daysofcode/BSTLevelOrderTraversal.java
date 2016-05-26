@@ -1,5 +1,7 @@
 package daysofcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -26,7 +28,32 @@ class Node3 {
 class BSTLevelOrderTraversal {
 	// finish this method, the rest is premade Hacker Rank code
 	static void levelOrder(Node3 root) {
-		
+		Queue<Node3> queue = new LinkedList<Node3>();
+		if (root != null) {
+			queue.add(root);
+		}
+		visit(queue);
+		System.out.println();
+	}
+
+	// another class to be completed not provided by Hacker Rank
+	public static void visit(Queue<Node3> queue) {
+		int startingQueueSize = queue.size();
+
+		for (int i = 0; i < startingQueueSize; i++) {
+			Node3 node = queue.remove();
+			System.out.print(node.data + " ");
+			if (node.left != null) {
+				queue.add(node.left);
+			}
+			if (node.right != null) {
+				queue.add(node.right);
+			}
+		}
+
+		if (queue.size() > 0) {
+			visit(queue);
+		}
 	}
 
 	public static Node3 insert(Node3 root, int data) {
