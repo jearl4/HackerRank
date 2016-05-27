@@ -1,5 +1,6 @@
 package daysofcode;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -18,6 +19,28 @@ public class BitwiseAnd {
 		for (int a0 = 0; a0 < t; a0++) {
 			int n = in.nextInt();
 			int k = in.nextInt();
+			System.out.println(findMax(n, k));
 		}
+	}
+
+	private static int findMax(int n, int k) {
+		int a = 0, b = 0;
+		int max = 0;
+		ArrayList<Integer> lista = new ArrayList<>();
+
+		for (int i = 1; i < n; i++)
+			lista.add(i);
+		for (int i = 0; i < lista.size(); i++) {
+			a = lista.get(i);
+			for (int j = i + 1; j < lista.size(); j++) {
+				b = lista.get(j);
+				if (a < b && (a & b) < k && max < (a & b)) {
+					max = a & b;
+				}
+
+			}
+		}
+
+		return max;
 	}
 }
