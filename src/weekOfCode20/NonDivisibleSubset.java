@@ -5,15 +5,18 @@ import java.util.Arrays;
 
 public class NonDivisibleSubset {
 	public static void main(String[] args) {
-		int k = 2;
-		int a[] = { 1, 2, 3, 4, 5 };
+		int k = 3;
+		int a[] = { 3, 7, 2, 4 };
 		Arrays.sort(a);
 		System.out.println(nonDivisiblePairs(a, k));
 	}
 
 	public static int nonDivisiblePairs(int[] listOfNumbers, int divisor) {
-		if (divisor == 0 || divisor == 1) { // can't divide by 0
+		if (divisor == 0) { // can't divide by 0
 			return 0;
+		}
+		if (divisor == 1) {
+			return 1;
 		}
 		ArrayList<Integer> subPair = new ArrayList<Integer>();
 
@@ -28,6 +31,9 @@ public class NonDivisibleSubset {
 
 		// solve the problem
 		for (int i = 0; i < subPair.size(); i++) {
+			if (subPair.get(i) % divisor == 0) {
+				i++;
+			}
 			for (int j = i + 1; j < subPair.size(); j++) {
 				int modI = subPair.get(i) % divisor;
 				int modJ = subPair.get(j) % divisor;
@@ -37,7 +43,7 @@ public class NonDivisibleSubset {
 			}
 		}
 		if (subPair.size() == 1) {
-			return 0;
+			return 1;
 		} else {
 			return subPair.size();
 		}
