@@ -7,7 +7,7 @@ public class NonDivisibleSubset {
 	public static void main(String[] args) {
 		int k = 2;
 		int a[] = { 1, 2, 3, 4, 5 };
-		// Arrays.sort(a);
+		Arrays.sort(a);
 		System.out.println(nonDivisiblePairs(a, k));
 	}
 
