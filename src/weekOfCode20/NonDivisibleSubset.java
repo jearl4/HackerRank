@@ -2,13 +2,12 @@ package weekOfCode20;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 
 public class NonDivisibleSubset {
 	public static void main(String[] args) {
-		int k = 1;
-		int a[] = { 4, 2, 2, 4, 6, 8, 10 };
-		Arrays.sort(a);
+		int k = 2;
+		int a[] = { 1, 2, 3, 4, 5 };
+		// Arrays.sort(a);
 		System.out.println(nonDivisiblePairs(a, k));
 	}
 
@@ -17,31 +16,31 @@ public class NonDivisibleSubset {
 			return 0;
 		}
 		ArrayList<Integer> subPair = new ArrayList<Integer>();
-		LinkedList<Integer> queueOfNumbers = new LinkedList<Integer>();
 
 		// add numbers to linked list
 		for (int i = 0; i < listOfNumbers.length; i++) {
-			queueOfNumbers.add(listOfNumbers[i]);
+			subPair.add(listOfNumbers[i]);
 		}
 		// if empty list
 		if (listOfNumbers.length == 0) {
 			return 0;
 		}
 
-		subPair.add(queueOfNumbers.removeFirst());
-
-		while (queueOfNumbers.isEmpty() != true) {
-			for (int i = 0; i < queueOfNumbers.size(); i++) {
-				int possibleNumber = queueOfNumbers.peek();
-				int sum = 0;
-				sum = possibleNumber + subPair.get(subPair.size() - 1);
-				if (sum % divisor != 0) {
-					subPair.add(queueOfNumbers.removeFirst());
-				} else {
-					queueOfNumbers.removeFirst();
+		// solve the problem
+		for (int i = 0; i < subPair.size(); i++) {
+			for (int j = i + 1; j < subPair.size(); j++) {
+				int modI = subPair.get(i) % divisor;
+				int modJ = subPair.get(j) % divisor;
+				if ((modI + modJ) % divisor == 0) {
+					subPair.remove(j);
 				}
 			}
 		}
-		return subPair.size();
+		if (subPair.size() == 1) {
+			return 0;
+		} else {
+			return subPair.size();
+		}
+
 	}
 }
