@@ -13,15 +13,15 @@ import java.util.Random;
 public class MergeSort {
 
 	public static void main(String[] args) {
-		// Random rand = new Random();
-		int[] array = { 4, 3, 2, 1, 0 };
+		Random rand = new Random();
+		int[] array = new int[5];
 		// fill array with random numbers 0-9
-		// for (int i = 0; i < array.length; i++) {
-		// array[i] = rand.nextInt(10);
-		// }
+		for (int i = 0; i < array.length; i++) {
+			array[i] = rand.nextInt(10);
+		}
 
 		// sort array
-		mergeSort(array, 0, array.length);
+		mergeSort(array, 0, array.length - 1);
 
 		// print sorted array
 		for (int j = 0; j < array.length; j++) {
@@ -41,7 +41,7 @@ public class MergeSort {
 	 * @return
 	 */
 	private static void merge(int[] array, int leftPoint, int midPoint, int rightPoint) {
-		int leftSize = midPoint - leftPoint;
+		int leftSize = midPoint - leftPoint + 1;
 		int rightSize = rightPoint - midPoint;
 
 		// create left and right subarrays, add one to hold sentinel values
@@ -52,7 +52,7 @@ public class MergeSort {
 		for (int i = 0; i < leftSize; i++)
 			leftArray[i] = array[leftPoint + i];
 		for (int i = 0; i < rightSize; i++)
-			rightArray[i] = array[midPoint + i];
+			rightArray[i] = array[midPoint + 1 + i];
 
 		// assign sentinel values
 		leftArray[leftSize] = Integer.MAX_VALUE;
@@ -60,13 +60,19 @@ public class MergeSort {
 
 		// merge
 		int i = 0, j = 0;
-		for (int k = leftPoint; k < rightPoint; k++) {
-			if (leftArray[i] <= rightArray[j]) {
+		for (int k = leftPoint; k < rightPoint + 1; k++) {
+			if (leftArray[i] < rightArray[j]) {
 				array[k] = leftArray[i];
-				i += 1;
-			} else {
+				i++;
+			} else if (i > leftSize - 1) {
 				array[k] = rightArray[j];
-				j += 1;
+				j++;
+			} else if (leftArray[i] <= rightArray[j]) {
+				array[k] = leftArray[i];
+				i++;
+			} else if (leftArray[i] > rightArray[j]) {
+				array[k] = rightArray[j];
+				j++;
 			}
 		}
 	}
