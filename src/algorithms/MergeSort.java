@@ -71,13 +71,20 @@ public class MergeSort {
 		}
 	}
 
-	private static int[] mergeSort(int[] array, int left, int right) {
+	/**
+	 * sorts elements in subarray [left..right]. if left >= right the subarray
+	 * has at most one element and is therefore already sorted.
+	 * 
+	 * @param array
+	 * @param left
+	 * @param right
+	 */
+	private static void mergeSort(int[] array, int left, int right) {
 		if (left < right) {
-			int middle = (int) Math.floor((left + right) / 2);
+			int middle = (left + right) / 2;
 			mergeSort(array, left, middle);
 			mergeSort(array, middle + 1, right);
 			merge(array, left, middle, right);
 		}
-		return array;
 	}
 }
