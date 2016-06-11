@@ -1,35 +1,37 @@
 package blackrocksprint;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class SuggestBetterSpendingRates {
 
 	public static void main(String[] args) {
-		// Scanner in = new Scanner(System.in);
-		// int portfolioValue = in.nextInt(); // p
-		// double interestRate = (in.nextDouble() / 100); // divide by 100 to
-		// get r
-		// int time = in.nextInt(); // number of times I will be calculated
-		// int threshold = in.nextInt(); // range of spending rates
-		//
-		// // second line input (spending rates)
-		// int[] rateArray = new int[time];
-		// for (int i = 0; i < time; i++) {
-		// rateArray[i] = in.nextInt();
-		// }
-		//
-		// for (int i = 0; i < time; i++) {
-		// int rate = 100 - rateArray[i];
-		// }
-
+		/**
+		 * These lines are for reading the input from Hacker Rank 
+		 * Scanner in = new Scanner(System.in); 
+		 * int portfolioValue = in.nextInt(); // p
+		 * double interestRate = (in.nextDouble() / 100); // divide by 100 to
+		 * get r int time = in.nextInt(); // number of times I will be calculated 
+		 * int threshold = in.nextInt(); // range of spending rates
+		 * 
+		 * // second line input (spending rates) 
+		 * int[] rateArray = newint[time]; 
+		 * for (int i = 0; i < time; i++) {
+		 *  	rateArray[i] = in.nextInt(); }
+		 */
+		
+		// create number formatter to round current income to 3 decimal spots
+		DecimalFormat threeDecimals = new DecimalFormat("#.###");
+		
 		int portfolioValue = 5000;
-		double interestRate = 5.5/100;
+		double interestRate = 5.5 / 100;
 		int time = 3;
 		int threshold = 1;
 		int[] rateArray = { 29, 42, 37 };
 
-		System.out.println(income(portfolioValue, interestRate, time, rateArray));
+		System.out.println(threeDecimals.format(income(portfolioValue, interestRate, time, rateArray)));
 	}
 
 	private static double income(int p, double r, int t, int[] s) {
