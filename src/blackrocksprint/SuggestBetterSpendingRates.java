@@ -31,10 +31,10 @@ public class SuggestBetterSpendingRates {
 		int threshold = 1;
 		int[] rateArray = { 29, 42, 37 };
 
-		System.out.println(threeDecimals.format(income(portfolioValue, interestRate, time, rateArray)));
+		System.out.println(threeDecimals.format(currentIncome(portfolioValue, interestRate, time, rateArray)));
 	}
 
-	private static double income(int p, double r, int t, int[] s) {
+	private static double currentIncome(int p, double r, int t, int[] s) {
 		double totalIncome = 0.0;
 		int[] calculatedRate = calculateRate(s, t); // first spot will be 0
 
