@@ -29,6 +29,7 @@ public class SuggestBetterSpendingRates {
 		int[] rateArray = { 29, 42, 37 };
 
 		System.out.println(threeDecimals.format(currentIncome(portfolioValue, interestRate, time, rateArray)));
+		maximizeIncome(threshold, rateArray);
 	}
 
 	private static double currentIncome(int p, double r, int t, int[] s) {
@@ -68,6 +69,29 @@ public class SuggestBetterSpendingRates {
 			sum += spendingRate[i];
 		}
 		return sum;
+	}
+
+	private static void maximizeIncome(int threshold, int[] spendingRate) {
+		// holds all possible threshold values of each spending value
+		int[][] thresholdArray = new int[(threshold * 2) + 1][spendingRate.length];
+		int[] values = new int[];
+		threshold *= -1; // turn threshold negative so it can be incremented in
+							// a loop
+		for (int i = 0; i < spendingRate.length; i++) {
+			for (int j = 0; j < thresholdArray.length; j++) {
+				thresholdArray[i][j] = spendingRate[i] + threshold;
+				threshold++;
+			}
+		}
+
+		int totalSum = getSum(spendingRate);
+		int temporarySum = 0;
+		for (int i = 0; i < thresholdArray.length; i++) {
+			for (int j = 0; j < thresholdArray[i].length; j++) {
+				// calculate the sum of all combinations in the array
+				// compare to the value of totalSum
+			}
+		}
 	}
 
 }
