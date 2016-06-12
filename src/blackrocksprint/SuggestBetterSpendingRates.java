@@ -9,13 +9,16 @@ public class SuggestBetterSpendingRates {
 
 	public static void main(String[] args) {
 		/**
-		 * These lines are for reading the input from Hacker Rank Scanner in =
-		 * new Scanner(System.in); int portfolioValue = in.nextInt(); // p
-		 * double interestRate = (in.nextDouble() / 100); // divide by 100 to
-		 * get r int time = in.nextInt(); // number of times I will be
-		 * calculated int threshold = in.nextInt(); // range of spending rates
+		 * These lines are for reading the input from Hacker Rank 
 		 * 
-		 * // second line input (spending rates) int[] rateArray = newint[time];
+		 * Scanner in = new Scanner(System.in); 
+		 * int portfolioValue = in.nextInt(); // p
+		 * double interestRate = (in.nextDouble() / 100); // divide by 100 to get r 
+		 * int time = in.nextInt(); // number of times I will be calculated 
+		 * int threshold = in.nextInt(); // range of spending rates
+		 * 
+		 * // second line input (spending rates) 
+		 * int[] rateArray = newint[time];
 		 * for (int i = 0; i < time; i++) { rateArray[i] = in.nextInt(); }
 		 */
 
