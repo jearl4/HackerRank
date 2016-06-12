@@ -34,7 +34,21 @@ public class SuggestBetterSpendingRates {
 		System.out.println(threeDecimals.format(currentIncome(portfolioValue, interestRate, time, rateArray)));
 		maximizeIncome(threshold, rateArray);
 	}
-
+	
+	/**
+	 * calculate the current income of a fund based off the principal, rate,
+	 * time and spending rates
+	 * 
+	 * @param p
+	 *            principal or portfolio value
+	 * @param r
+	 *            interest rate
+	 * @param t
+	 *            time
+	 * @param s
+	 *            array of spending rates
+	 * @return
+	 */
 	private static double currentIncome(int p, double r, int t, int[] s) {
 		double totalIncome = 0.0;
 		int[] calculatedRate = calculateRate(s, t); // first spot will be 0
@@ -48,6 +62,16 @@ public class SuggestBetterSpendingRates {
 		return totalIncome;
 	}
 
+	/**
+	 * removes the (100 - S) part of the equation by placing one in the first
+	 * index then multiplying every (100 - S) by the value in the index before it
+	 * 
+	 * @param s
+	 *            array of spending rate values
+	 * @param t
+	 *            time
+	 * @return an array of calculated values
+	 */
 	private static int[] calculateRate(int[] s, int t) {
 		int[] calculatedRate = new int[t + 1]; // first spot will be 0
 		for (int i = 0; i <= t; i++) {
@@ -73,20 +97,30 @@ public class SuggestBetterSpendingRates {
 		}
 		return sum;
 	}
-
+	
+	/**
+	 * calculates a possible range of spending values then runs these values
+	 * through currentIncome() to find the best possible spending values of the
+	 * fund
+	 * 
+	 * @param threshold
+	 *            the +/- range of spending values
+	 * @param spendingRate
+	 *            an array of the original spending values
+	 */
 	private static void maximizeIncome(int threshold, int[] spendingRate) {
 		// holds all possible threshold values of each spending value
 		int[][] thresholdArray = new int[(threshold * 2) + 1][spendingRate.length];
-		int[] values = new int[];
-		threshold *= -1; // turn threshold negative so it can be incremented in
-							// a loop
+		threshold *= -1; // turn threshold negative so it can be incremented
+		
 		for (int i = 0; i < spendingRate.length; i++) {
 			for (int j = 0; j < thresholdArray.length; j++) {
 				thresholdArray[i][j] = spendingRate[i] + threshold;
 				threshold++;
 			}
 		}
-
+		
+		// get the sum of the original spending values
 		int totalSum = getSum(spendingRate);
 		int temporarySum = 0;
 		for (int i = 0; i < thresholdArray.length; i++) {
