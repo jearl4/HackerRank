@@ -1,8 +1,6 @@
 package algorithms;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 public class Pangrams {
@@ -25,11 +23,11 @@ public class Pangrams {
 			lettersNeeded.remove(s.charAt(i));
 		}
 	}
-	
-	public void isPangram(){
-		if(lettersNeeded.isEmpty()){
+
+	public void isPangram() {
+		if (lettersNeeded.isEmpty()) {
 			System.out.println("pangram");
-		}else{
+		} else {
 			System.out.println("not pangram");
 		}
 	}

@@ -28,19 +28,19 @@ public class AlternatingCharacters {
 	public static int countDeletions(String s) {
 		int count = 0, index = 0;
 		for (int i = 1; i < s.length(); i++) {
-			System.out.println(s.charAt(i));
-			if (s.charAt(i) == s.charAt(index)) {
-				count++;
+			// check if first character is the same as second
+			if (s.charAt(index) == s.charAt(i)) {
+				count++; // if yes add to deletions
 			} else {
-				index = i;
+				index = i; // if not set index to second character and repeat
 			}
 		}
 		return count;
 	}
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int testCases = Integer.parseInt(in.nextLine());
+		Scanner in = new Scanner(System.in); // take in Hacker Rank input
+		int testCases = Integer.parseInt(in.nextLine()); // number of tests
 		String[] input = new String[testCases];
 		for (int i = 0; i < testCases; i++) {
 			input[i] = in.nextLine();

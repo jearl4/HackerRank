@@ -2,7 +2,9 @@ package algorithms;
 
 import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Given the nth and (n+1)th terms, the (n+2)th can be computed by the following
@@ -20,19 +22,33 @@ import java.util.Map;
  *
  */
 public class FibonacciModified {
-	
-	static Map<Integer, Integer> numbersMap = new HashMap<Integer, Integer>();
-	
-	public static void main (String[] args){
-		numbersMap.put(0, 0);
-		numbersMap.put(1, 1);
-		System.out.println(fib(3));
+
+	static Hashtable<Integer, Integer> numbersTable = new Hashtable<Integer, Integer>();
+
+	public static void main(String[] args) {
+		/**
+		 * For taking input on Hacker Rank 
+		 * 
+		 * Scanner in = new Scanner(System.in);
+		 * int firstNumber = in.nextInt(); 
+		 * int secondNumber = in.nextInt(); 
+		 * int nthNumber = in.nextInt();
+		 */
+		
+		int firstNumber = 0;
+		int secondNumber = 1;
+		int nthNumber = 5;
+		
+		numbersTable.put(firstNumber, firstNumber);
+		numbersTable.put(secondNumber, secondNumber);
+		System.out.println(fib(nthNumber));
 	}
-	
-	private static int fib(int num){
-		if(!numbersMap.containsKey(num)){
-			numbersMap.put(num, fib(num-1) + fib(num-2));
+
+	private static int fib(int num) {
+		if (!numbersTable.containsKey(num)) {
+			//numbersMap.put(num, fib(num - 1) + fib(num - 2));
+			numbersTable.put(num, fib((int) Math.sqrt(num)) + fib(num));
 		}
-		return numbersMap.get(num);
+		return numbersTable.get(num);
 	}
 }
